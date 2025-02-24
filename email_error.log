@@ -1,0 +1,4 @@
+[2025-01-15 11:28:25] Attempting to send email to: akbarinirali27@gmail.com
+[2025-01-15 11:28:27] Mail send failed - PHP mail() returned false
+[2025-01-15 11:28:27] Error sending email: Failed to send email
+[2025-01-15 11:28:27] Email sending failed after successful database insert

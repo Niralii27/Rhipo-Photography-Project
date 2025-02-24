@@ -1,0 +1,334 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #9D8161;
+    --heart-color: #ff4444;
+    --text-color: #333;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Container Styles */
+.image-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: clamp(10px, 3vw, 30px);
+}
+
+/* Title/Caption Styles */
+.caption {
+    color: var(--primary-color);
+    font-family: 'The New Elegance', serif;
+    font-size: clamp(24px, 4vw, 35px);
+    margin-bottom: clamp(20px, 4vw, 40px);
+    text-align: center;
+}
+
+/* Main Image Styles */
+.image-container > img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: clamp(20px, 4vw, 40px);
+}
+
+/* Text Content Styles */
+.text-below-image {
+    width: 100%;
+    font-size: clamp(14px, 2vw, 18px);
+    line-height: 1.6;
+    margin: clamp(15px, 3vw, 30px) 0;
+}
+
+/* Image Gallery Layout */
+.image-gallery {
+    width: 100%;
+    margin: clamp(20px, 4vw, 40px) 0;
+}
+
+/* Extra Small Devices (phones, 320px and up) */
+@media (min-width: 320px) {
+    .image-gallery {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .left-panel {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .small-img {
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+        border-radius: 6px;
+    }
+
+    .right-panel .main-img {
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        border-radius: 6px;
+    }
+}
+
+/* Small Devices (larger phones, 480px and up) */
+@media (min-width: 480px) {
+    .left-panel {
+        gap: 15px;
+    }
+
+    .small-img, .main-img {
+        border-radius: 8px;
+    }
+}
+
+/* Medium Devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .image-gallery {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: clamp(20px, 3vw, 30px);
+    }
+
+    .left-panel {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(15px, 2vw, 25px);
+    }
+
+    .right-panel .main-img {
+        height: 100%;
+        max-height: 600px;
+    }
+}
+
+/* Large Devices (desktops, 1024px and up) */
+@media (min-width: 1024px) {
+    .image-gallery {
+        gap: 30px;
+    }
+
+    .small-img:hover, .main-img:hover {
+        transform: scale(1.02);
+        transition: transform 0.3s ease;
+    }
+}
+
+/* Social Section Styles */
+.social-section {
+    margin-top: clamp(20px, 4vw, 40px);
+    padding: clamp(10px, 2vw, 20px) 0;
+    border-top: 1px solid #eee;
+}
+
+.interaction-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: clamp(15px, 3vw, 30px);
+    flex-wrap: wrap;
+}
+
+/* Like Button Styles */
+.like-button {
+    background: none;
+    border: 2px solid var(--heart-color);
+    border-radius: 50%;
+    width: clamp(36px, 5vw, 44px);
+    height: clamp(36px, 5vw, 44px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.like-button.liked {
+    background-color: var(--heart-color);
+}
+
+.like-button i {
+    font-size: clamp(16px, 2.5vw, 20px);
+    color: var(--heart-color);
+    transition: color 0.3s ease;
+}
+
+.like-button.liked i {
+    color: white;
+}
+
+.like-count {
+    font-size: clamp(14px, 2vw, 16px);
+}
+
+/* Share Button and Popup */
+.share-container {
+    position: relative;
+}
+
+.share-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.share-button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.share-popup {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px var(--shadow-color);
+    padding: clamp(10px, 2vw, 15px);
+    display: none;
+    flex-direction: row;
+    gap: clamp(10px, 2vw, 15px);
+    z-index: 1000;
+}
+
+/* Share Popup Responsive Positioning */
+@media (max-width: 480px) {
+    .share-popup {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        transform: none;
+        border-radius: 15px 15px 0 0;
+        justify-content: space-around;
+        padding: 20px;
+    }
+}
+
+.share-popup.active {
+    display: flex;
+}
+
+.share-option {
+    width: clamp(40px, 6vw, 50px);
+    height: clamp(40px, 6vw, 50px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.share-option i {
+    font-size: clamp(18px, 2.5vw, 22px);
+}
+
+/* Social Media Colors and Hover Effects */
+.share-option.facebook:hover { 
+    background-color: rgba(24, 119, 242, 0.1);
+    color: #1877f2;
+}
+
+.share-option.twitter:hover { 
+    background-color: rgba(29, 161, 242, 0.1);
+    color: #1da1f2;
+}
+
+.share-option.instagram:hover { 
+    background-color: rgba(228, 64, 95, 0.1);
+    color: #e4405f;
+}
+
+.share-option.copy-link:hover { 
+    background-color: rgba(0, 200, 83, 0.1);
+    color: #00c853;
+}
+
+/* Success Message for Copy Link */
+.success-message {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #4CAF50;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: clamp(14px, 2vw, 16px);
+    z-index: 1100;
+    animation: fadeInOut 2s ease;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translate(-50%, 20px); }
+    20% { opacity: 1; transform: translate(-50%, 0); }
+    80% { opacity: 1; transform: translate(-50%, 0); }
+    100% { opacity: 0; transform: translate(-50%, -20px); }
+}
+
+/* Loading States */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-color: #f5f5f5;
+        --shadow-color: rgba(0, 0, 0, 0.3);
+    }
+
+    body {
+        background-color: #1a1a1a;
+    }
+
+    .share-popup {
+        background: #2d2d2d;
+    }
+
+    .share-option:hover {
+        background-color: #3d3d3d;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .social-section {
+        display: none;
+    }
+
+    .image-container {
+        padding: 0;
+    }
+
+    img {
+        page-break-inside: avoid;
+    }
+}
